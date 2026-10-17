@@ -134,6 +134,24 @@ python -m pytest tests/ -q
 跑完要检查什么、报告时必须附带哪些口径。把整个目录放进 agent 的用户级
 skills 目录即可自动加载；脚本本身自包含，也可以完全不经过 skill 层直接用命令行。
 
+## 一次安装两个 skill
+
+提供了一个一键安装脚本，会同时安装本 skill 和配套的力学性能 skill：
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/ArthurEccleston/grain-size-analyzer/main/install/install-skills.sh \
+  | sh -s -- "$HOME/.claude/skills"
+```
+
+Windows PowerShell：
+
+```powershell
+irm https://raw.githubusercontent.com/ArthurEccleston/grain-size-analyzer/main/install/install-skills.ps1 | iex
+```
+
+给 agent 读的安装说明、手动步骤和依赖清单见
+[install/AGENT_INSTALL.md](install/AGENT_INSTALL.md)。
+
 ## 许可证
 
 MIT，见 [LICENSE](LICENSE)。

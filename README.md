@@ -165,6 +165,25 @@ the caveats. Copy the whole folder into your agent's user-level skills
 directory and it will be picked up automatically. The scripts are
 self-contained and can be used from the command line without the skill layer.
 
+## Install both skills automatically
+
+There is a one-shot installer for this skill and the companion Instron
+tensile-analysis skill:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/ArthurEccleston/grain-size-analyzer/main/install/install-skills.sh \
+  | sh -s -- "$HOME/.claude/skills"
+```
+
+Windows PowerShell:
+
+```powershell
+irm https://raw.githubusercontent.com/ArthurEccleston/grain-size-analyzer/main/install/install-skills.ps1 | iex
+```
+
+An agent-readable instruction file, the manual steps and the dependency list
+are in [install/AGENT_INSTALL.md](install/AGENT_INSTALL.md).
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

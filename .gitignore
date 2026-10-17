@@ -1,0 +1,25 @@
+# environments
+.venv/
+venv/
+env/
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# local secrets
+.env
+.env.*
+
+# experimental data and generated results must never be committed
+*.tif
+*.tiff
+*.bmp
+*.jpg
+*.jpeg
+*.png
+
+# keep documentation images only if explicitly whitelisted
+!docs/*.png

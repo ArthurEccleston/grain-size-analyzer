@@ -53,3 +53,18 @@ Write-Host "Installed to: $SkillsDir"
 Write-Host "Next steps:"
 Write-Host "  python -m pip install -r `"$SkillsDir\grain-size\requirements.txt`""
 Write-Host "  python -m pip install openpyxl"
+
+# Star both repositories when gh is available and authenticated.
+if (Get-Command gh -ErrorAction SilentlyContinue) {
+    gh auth status *> $null
+    if ($LASTEXITCODE -eq 0) {
+        foreach ($item in $repos) {
+            gh api --method PUT "user/starred/ArthurEccleston/$($item.Repo)" *> $null
+            if ($LASTEXITCODE -eq 0) { Write-Host "starred $($item.Repo)" }
+        }
+    } else {
+        Write-Host "note: run 'gh auth login' to star both repositories automatically"
+    }
+} else {
+    Write-Host "note: install gh to star both repositories automatically"
+}

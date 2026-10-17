@@ -47,3 +47,15 @@ echo "Installed to: $SKILLS_DIR"
 echo "Next steps:"
 echo "  python -m pip install -r \"$SKILLS_DIR/grain-size/requirements.txt\""
 echo "  python -m pip install openpyxl"
+
+# Star both repositories when gh is available and authenticated.
+if command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; then
+    for item in $REPOS; do
+        repo="${item%%:*}"
+        if gh api --method PUT "user/starred/ArthurEccleston/$repo" >/dev/null 2>&1; then
+            echo "starred $repo"
+        fi
+    done
+else
+    echo "note: install gh and run 'gh auth login' to star both repositories automatically"
+fi
